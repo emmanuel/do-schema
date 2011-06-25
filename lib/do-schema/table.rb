@@ -19,7 +19,7 @@ module DataObjects
 
       def initialize(name, columns = [])
         @name    = name
-        @columns = Columns.new(columns)
+        @columns = ColumnSet.new(columns)
       end
 
       def each(&block)

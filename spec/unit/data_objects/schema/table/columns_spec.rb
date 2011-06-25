@@ -9,8 +9,8 @@ describe 'DataObjects::Schema::Table#columns' do
 
     let(:table) { DataObjects::Schema::Table.new('name') }
 
-    it { should be_instance_of(DataObjects::Schema::Columns) }
-    it { should == DataObjects::Schema::Columns.new([]) }
+    it { should be_instance_of(DataObjects::Schema::ColumnSet) }
+    it { should == DataObjects::Schema::ColumnSet.new([])      }
 
   end
 
@@ -20,8 +20,8 @@ describe 'DataObjects::Schema::Table#columns' do
 
     let(:table) { DataObjects::Schema::Table.new('name', []) }
 
-    it { should be_instance_of(DataObjects::Schema::Columns) }
-    it { should == DataObjects::Schema::Columns.new([]) }
+    it { should be_instance_of(DataObjects::Schema::ColumnSet) }
+    it { should == DataObjects::Schema::ColumnSet.new([])      }
 
   end
 

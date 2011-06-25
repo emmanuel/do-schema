@@ -2,13 +2,13 @@ require 'spec_helper'
 require 'do-schema/column'
 require 'spec/unit/data_objects/schema/ordered_set/shared/append_spec'
 
-describe 'DataObjects::Schema::Columns#<<' do
+describe 'DataObjects::Schema::ColumnSet#<<' do
 
   subject { columns << entry2 }
 
   let(:columns) { set                                            }
 
-  let(:set)     { DataObjects::Schema::Columns.new([entry1])     }
+  let(:set)     { DataObjects::Schema::ColumnSet.new([ entry1 ]) }
   let(:entry1)  { DataObjects::Schema::Column.new('column1', {}) }
 
   context 'when appending a not yet included column' do

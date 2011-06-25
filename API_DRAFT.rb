@@ -21,10 +21,10 @@
            #                      Reference                                   #
            #                                                                  #
            #                      OrderedSet                                  #
-           #                      Columns       (has-a OrderedSet)            #
            #                      Indexes       (has-a OrderedSet)            #
            #                      UniqueIndexes (has-a OrderedSet)            #
            #                      ForeignKeys   (has-a OrderedSet)            #
+           #                      ColumnSet      (has-a OrderedSet)           #
            #                                                                  #
            #                                                                  #
            # ---------------------------------------------------------------  #
@@ -64,7 +64,7 @@ database.tables.each do |table|
 
 
   # Column API
-  table.columns                # => Columns.new([ Column ])
+  table.columns                # => ColumnSet.new([ Column ])
 
   table.each do |column|
 
@@ -84,7 +84,7 @@ database.tables.each do |table|
 
   # Primary Key API
   table.primary_key            # => PrimaryKey.new(name, [ Column ])
-  table.primary_key.columns    # => Columns.new([ Column ])
+  table.primary_key.columns    # => ColumnSet.new([ Column ])
   table.primary_key.unique?    # => true
 
 
@@ -95,7 +95,7 @@ database.tables.each do |table|
 
     foreign_key                # => ForeignKey.new('name', [ Column ], reference, :on_delete => :restrict, :on_update => :restrict)
     foreign_key.name           # => "foreign_key_name"
-    foreign_key.columns        # => Columns.new([ Column ])
+    foreign_key.columns        # => ColumnSet.new([ Column ])
     foreign_key.reference      # => Reference.new(other_table, other_table.primary_key)
     foreign_key.on_delete      # => :restrict
     foreign_key.on_update      # => :restrict
@@ -114,7 +114,7 @@ database.tables.each do |table|
     index                      # => Index.new('name', [ Column ])
     index.name                 # => 'name'
     index.unique?              # => false
-    index.columns              # => Columns.new([ Column ])
+    index.columns              # => ColumnSet.new([ Column ])
 
   end
 
@@ -126,7 +126,7 @@ database.tables.each do |table|
     unique_index               # => UniqueIndex.new('name', [ Column ])
     unique_index.name          # => 'name'
     unique_index.unique?       # => true
-    unique_index.columns       # => Columns.new([ Column ])
+    unique_index.columns       # => ColumnSet.new([ Column ])
 
   end
 

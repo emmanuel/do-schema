@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'do-schema/column'
 
-describe 'DataObjects::Schema::Columns#eql?' do
+describe 'DataObjects::Schema::ColumnSet#eql?' do
 
   subject { columns.eql?(other) }
 
-  let(:original_column)  { DataObjects::Schema::Column.new('name', {}) }
-  let(:columns)          { DataObjects::Schema::Columns.new([original_column]) }
+  let(:original_column)  { DataObjects::Schema::Column.new('name', {})             }
+  let(:columns)          { DataObjects::Schema::ColumnSet.new([ original_column ]) }
 
   context 'with the same columns' do
 
@@ -32,8 +32,8 @@ describe 'DataObjects::Schema::Columns#eql?' do
 
   context 'with both containing no columns' do
 
-    let(:columns) { DataObjects::Schema::Columns.new }
-    let(:other)   { DataObjects::Schema::Columns.new }
+    let(:columns) { DataObjects::Schema::ColumnSet.new }
+    let(:other)   { DataObjects::Schema::ColumnSet.new }
 
     it { should be(true) }
 
@@ -44,8 +44,8 @@ describe 'DataObjects::Schema::Columns#eql?' do
 
   context 'with different columns' do
 
-    let(:different_column) { DataObjects::Schema::Column.new('different', {})                       }
-    let(:other)            { DataObjects::Schema::Columns.new([different_column])  }
+    let(:different_column) { DataObjects::Schema::Column.new('different', {})         }
+    let(:other)            { DataObjects::Schema::ColumnSet.new([ different_column ]) }
 
     it { should be(false) }
 

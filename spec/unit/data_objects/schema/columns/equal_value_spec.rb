@@ -4,7 +4,7 @@ require 'do-schema/column'
 module DataObjects::Schema::Specs
 
   # Used to test duck typing behavior
-  class ColumnsDuck
+  class ColumnSetDuck
     attr_reader :entries
 
     def initialize(columns = [])
@@ -13,12 +13,12 @@ module DataObjects::Schema::Specs
   end
 end
 
-describe 'DataObjects::Schema::Columns#==' do
+describe 'DataObjects::Schema::ColumnSet#==' do
 
   subject { columns == other }
 
-  let(:original_column)  { DataObjects::Schema::Column.new('name', {}) }
-  let(:columns)          { DataObjects::Schema::Columns.new([original_column]) }
+  let(:original_column)  { DataObjects::Schema::Column.new('name', {})             }
+  let(:columns)          { DataObjects::Schema::ColumnSet.new([ original_column ]) }
 
   context 'with the same columns' do
 
@@ -43,9 +43,9 @@ describe 'DataObjects::Schema::Columns#==' do
   end
 
   # TODO This probably needs more thought
-  context 'with a class that quacks like Columns and is equivalent otherwise' do
+  context 'with a class that quacks like ColumnSet and is equivalent otherwise' do
 
-    let(:other) { DataObjects::Schema::Specs::ColumnsDuck.new([original_column]) }
+    let(:other) { DataObjects::Schema::Specs::ColumnSetDuck.new([ original_column ]) }
 
     it { should be(false) }
 
@@ -56,7 +56,7 @@ describe 'DataObjects::Schema::Columns#==' do
 
   context 'with a subclass that is equivalent otherwise' do
 
-    let(:other) { Class.new(DataObjects::Schema::Columns).new([original_column]) }
+    let(:other) { Class.new(DataObjects::Schema::ColumnSet).new([ original_column ]) }
 
     it { should be(true) }
 
@@ -67,8 +67,8 @@ describe 'DataObjects::Schema::Columns#==' do
 
   context 'with both containing no columns' do
 
-    let(:columns) { DataObjects::Schema::Columns.new }
-    let(:other)   { DataObjects::Schema::Columns.new }
+    let(:columns) { DataObjects::Schema::ColumnSet.new }
+    let(:other)   { DataObjects::Schema::ColumnSet.new }
 
     it { should be(true) }
 
@@ -79,8 +79,8 @@ describe 'DataObjects::Schema::Columns#==' do
 
   context 'with different columns' do
 
-    let(:different_column) { DataObjects::Schema::Column.new('different', {})                       }
-    let(:other)            { DataObjects::Schema::Columns.new([different_column])  }
+    let(:different_column) { DataObjects::Schema::Column.new('different', {})         }
+    let(:other)            { DataObjects::Schema::ColumnSet.new([ different_column ]) }
 
     it { should be(false) }
 

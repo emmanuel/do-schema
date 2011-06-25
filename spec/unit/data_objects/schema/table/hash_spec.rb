@@ -5,11 +5,11 @@ describe 'DataObjects::Schema::Table#hash' do
 
   subject { table.hash }
 
-  let(:name)     { 'name'                                        }
-  let(:column)   { DataObjects::Schema::Column.new(name, {})     }
-  let(:columns)  { DataObjects::Schema::Columns.new([column])    }
+  let(:name)     { 'name'                                         }
+  let(:column)   { DataObjects::Schema::Column.new(name, {})      }
+  let(:columns)  { DataObjects::Schema::ColumnSet.new([ column ]) }
 
-  let(:table)    { DataObjects::Schema::Table.new(name, columns) }
+  let(:table)    { DataObjects::Schema::Table.new(name, columns)  }
 
   it { should be_kind_of(Integer) }
 

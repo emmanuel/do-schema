@@ -3,7 +3,7 @@ require 'do-schema/support/ordered_set'
 module DataObjects
   module Schema
 
-    class Columns < OrderedSet
+    class ColumnSet < OrderedSet
     end
 
     class Column

@@ -9,7 +9,7 @@ module DataObjects::Schema::Specs
     attr_reader :columns
 
     def initialize(name, columns = [])
-      @name, @options = name, DataObjects::Schema::Columns.new(columns)
+      @name, @options = name, DataObjects::Schema::ColumnSet.new(columns)
     end
   end
 end
@@ -71,7 +71,7 @@ describe 'DataObjects::Schema::Table#==' do
   context 'with a table with the same name and different columns' do
 
     let(:column)  { DataObjects::Schema::Column.new('different', {}) }
-    let(:columns) { DataObjects::Schema::Columns.new([column])       }
+    let(:columns) { DataObjects::Schema::ColumnSet.new([ column ])    }
 
     let(:other) { DataObjects::Schema::Table.new(name, columns) }
 
@@ -99,10 +99,10 @@ describe 'DataObjects::Schema::Table#==' do
   context 'with a table with a different name and different columns' do
 
     let(:name)    { 'different' }
-    let(:column)  { DataObjects::Schema::Column.new('name', {}) }
-    let(:columns) { DataObjects::Schema::Columns.new([column])  }
+    let(:column)  { DataObjects::Schema::Column.new('name', {})    }
+    let(:columns) { DataObjects::Schema::ColumnSet.new([ column ]) }
 
-    let(:other) { DataObjects::Schema::Table.new(name, columns) }
+    let(:other) { DataObjects::Schema::Table.new(name, columns)    }
 
     it { should be(false) }
 

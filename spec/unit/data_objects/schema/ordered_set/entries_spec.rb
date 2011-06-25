@@ -18,8 +18,8 @@ describe 'DataObjects::Schema::OrderedSet#entries' do
 
   context 'with entries' do
 
-    let(:set)   { DataObjects::Schema::Columns.new([entry]) }
-    let(:entry) { 1                                         }
+    let(:set)   { DataObjects::Schema::ColumnSet.new([ entry ]) }
+    let(:entry) { 1                                             }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#entries with entries'
 

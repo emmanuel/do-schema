@@ -2,11 +2,11 @@ require 'spec_helper'
 require 'do-schema/column'
 require 'spec/unit/data_objects/schema/ordered_set/shared/initialize_spec'
 
-describe 'DataObjects::Schema::Columns#initialize' do
+describe 'DataObjects::Schema::ColumnSet#initialize' do
 
   context 'when no entries are given' do
 
-    subject { DataObjects::Schema::Columns.new }
+    subject { DataObjects::Schema::ColumnSet.new }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#initialize when no entries are given'
 
@@ -14,7 +14,7 @@ describe 'DataObjects::Schema::Columns#initialize' do
 
   context 'when entries are given' do
 
-    subject { DataObjects::Schema::Columns.new(entries) }
+    subject { DataObjects::Schema::ColumnSet.new(entries) }
 
     context 'and they do not contain duplicates' do
 
