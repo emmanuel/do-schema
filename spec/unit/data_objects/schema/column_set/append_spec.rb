@@ -28,5 +28,14 @@ module DataObjects::Schema
 
     end
 
+    context 'when appending a not-yet included column with the same name as an already included column' do
+
+      let(:entry2)  { Column.new(entry1.name, :default => "test") }
+
+      # TODO: refuse to append additional columns with name collisions
+      it_should_behave_like 'DataObjects::Schema::OrderedSet#<< when appending an already included entry'
+
+    end
+
   end
 end
