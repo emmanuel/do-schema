@@ -1,16 +1,17 @@
 require 'spec_helper'
 require 'data_objects/schema/column'
 
-describe 'DataObjects::Schema::ColumnSet#hash' do
+module DataObjects::Schema
+  describe ColumnSet, '#hash' do
 
-  subject { columns.hash }
+    subject { columns.hash }
 
-  let(:column)   { DataObjects::Schema::Column.new('name', {})    }
-  let(:columns)  { DataObjects::Schema::ColumnSet.new([ column ]) }
+    let(:column)   { Column.new('name', {})    }
+    let(:columns)  { ColumnSet.new([ column ]) }
 
-  it { should be_kind_of(Integer) }
+    it { should be_kind_of(::Integer) }
 
-  it { should == columns.entries.hash }
+    it { should == columns.entries.hash }
 
+  end
 end
-

@@ -2,28 +2,29 @@ require 'spec_helper'
 require 'data_objects/schema/support/ordered_set'
 require 'spec/unit/data_objects/schema/ordered_set/shared/entries_spec'
 
-describe 'DataObjects::Schema::OrderedSet#entries' do
+module DataObjects::Schema
+  describe OrderedSet, '#entries' do
 
-  subject { ordered_set.entries }
+    subject { ordered_set.entries }
 
-  let(:ordered_set) { set }
+    let(:ordered_set) { set }
 
-  context 'with no entries' do
+    context 'with no entries' do
 
-    let(:set) { DataObjects::Schema::OrderedSet.new }
+      let(:set) { OrderedSet.new }
 
-    it_should_behave_like 'DataObjects::Schema::OrderedSet#entries with no entries'
+      it_should_behave_like 'DataObjects::Schema::OrderedSet#entries with no entries'
+
+    end
+
+    context 'with entries' do
+
+      let(:set)   { ColumnSet.new([ entry ]) }
+      let(:entry) { 1                        }
+
+      it_should_behave_like 'DataObjects::Schema::OrderedSet#entries with entries'
+
+    end
 
   end
-
-  context 'with entries' do
-
-    let(:set)   { DataObjects::Schema::ColumnSet.new([ entry ]) }
-    let(:entry) { 1                                             }
-
-    it_should_behave_like 'DataObjects::Schema::OrderedSet#entries with entries'
-
-  end
-
 end
-

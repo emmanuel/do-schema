@@ -1,13 +1,14 @@
 require 'spec_helper'
 require 'do-schema'
 
-describe 'DataObjects::Schema.load' do
+module DataObjects::Schema
+  describe '.load' do
 
-  subject { DataObjects::Schema.load(uri) }
+    subject { DataObjects::Schema.load(uri) }
 
-  let(:uri) { mock(:uri) }
+    let(:uri) { mock(:uri) }
 
-  it { pending { expect { subject }.to_not raise_error(NotImplementedError) } }
+    it { pending { expect { subject }.to_not raise_error(NotImplementedError) } }
 
+  end
 end
-

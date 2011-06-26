@@ -1,14 +1,15 @@
 require 'spec_helper'
 require 'data_objects/schema/column'
 
-describe 'DataObjects::Schema::Column#name' do
+module DataObjects::Schema
+  describe Column, '#name' do
 
-  subject { column.name }
+    subject { column.name }
 
-  let(:name)   { 'foo' }
-  let(:column) { DataObjects::Schema::Column.new(name, {}) }
+    let(:name)   { 'foo' }
+    let(:column) { Column.new(name, {}) }
 
-  it { should == name }
+    it { should == name }
 
+  end
 end
-

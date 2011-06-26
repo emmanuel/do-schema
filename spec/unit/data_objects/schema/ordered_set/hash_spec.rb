@@ -1,16 +1,17 @@
 require 'spec_helper'
 require 'data_objects/schema/support/ordered_set'
 
-describe 'DataObjects::Schema::OrderedSet#hash' do
+module DataObjects::Schema
+  describe OrderedSet, '#hash' do
 
-  subject { ordered_set.hash }
+    subject { ordered_set.hash }
 
-  let(:entry)       { 1                                            }
-  let(:ordered_set) { DataObjects::Schema::OrderedSet.new([entry]) }
+    let(:entry)       { 1                         }
+    let(:ordered_set) { OrderedSet.new([ entry ]) }
 
-  it { should be_kind_of(Integer) }
+    it { should be_kind_of(::Integer) }
 
-  it { should == ordered_set.entries.hash }
+    it { should == ordered_set.entries.hash }
 
+  end
 end
-

@@ -1,32 +1,33 @@
  require 'spec_helper'
  require 'data_objects/schema/table'
 
- describe 'DataObjects::Schema::Table#initialize' do
+module DataObjects::Schema
+  describe Table, '#initialize' do
 
-   let(:name) { 'name' }
+    let(:name) { 'name' }
 
-   shared_examples_for 'calling DataObjects::Schema::Table#initialize' do
+    shared_examples_for 'calling DataObjects::Schema::Table#initialize' do
 
-     its(:name)    { should == name }
-     its(:columns) { should == DataObjects::Schema::ColumnSet.new([]) }
+      its(:name)    { should == name }
+      its(:columns) { should == ColumnSet.new([]) }
 
-   end
+    end
 
-   context 'when no columns are passed at construction time' do
+    context 'when no columns are passed at construction time' do
 
-     subject { DataObjects::Schema::Table.new(name) }
+      subject { Table.new(name) }
 
-     it_should_behave_like 'calling DataObjects::Schema::Table#initialize'
+      it_should_behave_like 'calling DataObjects::Schema::Table#initialize'
 
-   end
+    end
 
-   context 'when an array is passed at construction time' do
+    context 'when an array is passed at construction time' do
 
-     subject { DataObjects::Schema::Table.new(name, []) }
+      subject { Table.new(name, []) }
 
-     it_should_behave_like 'calling DataObjects::Schema::Table#initialize'
+      it_should_behave_like 'calling DataObjects::Schema::Table#initialize'
 
-   end
+    end
 
- end
-
+  end
+end

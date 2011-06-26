@@ -1,16 +1,17 @@
 require 'spec_helper'
 require 'data_objects/schema/table'
 
-describe 'DataObjects::Schema::TableSet#hash' do
+module DataObjects::Schema
+  describe TableSet, '#hash' do
 
-  subject { tables.hash }
+    subject { tables.hash }
 
-  let(:table)  { DataObjects::Schema::Table.new('name')       }
-  let(:tables) { DataObjects::Schema::TableSet.new([ table ]) }
+    let(:table)  { Table.new('name')       }
+    let(:tables) { TableSet.new([ table ]) }
 
-  it { should be_kind_of(Integer) }
+    it { should be_kind_of(::Integer) }
 
-  it { should == tables.entries.hash }
+    it { should == tables.entries.hash }
 
+  end
 end
-

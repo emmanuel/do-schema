@@ -2,23 +2,24 @@ require 'spec_helper'
 require 'data_objects/schema/support/ordered_set'
 require 'spec/unit/data_objects/schema/ordered_set/shared/each_spec'
 
-describe 'DataObjects::Schema::OrderedSet' do
+module DataObjects::Schema
+  describe OrderedSet do
 
-  subject { DataObjects::Schema::OrderedSet.new }
+    subject { OrderedSet.new }
 
-  it_should_behave_like 'DataObjects::Schema::OrderedSet'
+    it_should_behave_like 'DataObjects::Schema::OrderedSet'
 
+  end
+
+  describe OrderedSet, '#each' do
+
+    subject { set.each { |entry| yields << entry } }
+
+    let(:set)    { OrderedSet.new([ entry ]) }
+    let(:entry)  { 1                         }
+    let(:yields) { []                        }
+
+    it_should_behave_like 'DataObjects::Schema::OrderedSet#each'
+
+  end
 end
-
-describe 'DataObjects::Schema::OrderedSet#each' do
-
-  subject { set.each { |entry| yields << entry } }
-
-  let(:set)    { DataObjects::Schema::OrderedSet.new([entry]) }
-  let(:entry)  { 1                                            }
-  let(:yields) { []                                           }
-
-  it_should_behave_like 'DataObjects::Schema::OrderedSet#each'
-
-end
-

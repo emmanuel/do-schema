@@ -1,14 +1,16 @@
 require 'spec_helper'
 require 'data_objects/schema/column'
 
-describe 'DataObjects::Schema::Column#default_options' do
+module DataObjects::Schema
+  describe Column, '#default_options' do
 
-  subject { column.default_options }
+    subject { column.default_options }
 
-  let(:column) { DataObjects::Schema::Column.new('name', {}) }
-  let(:default_options) { { :required => true } }
+    let(:column) { Column.new('name', {}) }
+    let(:default_options) { { :required => true } }
 
-  it { should == default_options }
+    it { should == default_options }
+
+  end
 
 end
-

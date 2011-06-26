@@ -1,29 +1,30 @@
 require 'spec_helper'
 require 'data_objects/schema/table'
 
-describe 'DataObjects::Schema::Table#columns' do
+module DataObjects::Schema
+  describe Table, '#columns' do
 
-  context 'with no columns given at construction time' do
+    context 'with no columns given at construction time' do
 
-    subject { table.columns }
+      subject { table.columns }
 
-    let(:table) { DataObjects::Schema::Table.new('name') }
+      let(:table) { Table.new('name') }
 
-    it { should be_instance_of(DataObjects::Schema::ColumnSet) }
-    it { should == DataObjects::Schema::ColumnSet.new([])      }
+      it { should be_instance_of(ColumnSet) }
+      it { should == ColumnSet.new([])      }
+
+    end
+
+    context 'with an array of columns at construction time' do
+
+      subject { table.columns }
+
+      let(:table) { Table.new('name', []) }
+
+      it { should be_instance_of(ColumnSet) }
+      it { should == ColumnSet.new([])      }
+
+    end
 
   end
-
-  context 'with an array of columns at construction time' do
-
-    subject { table.columns }
-
-    let(:table) { DataObjects::Schema::Table.new('name', []) }
-
-    it { should be_instance_of(DataObjects::Schema::ColumnSet) }
-    it { should == DataObjects::Schema::ColumnSet.new([])      }
-
-  end
-
 end
-

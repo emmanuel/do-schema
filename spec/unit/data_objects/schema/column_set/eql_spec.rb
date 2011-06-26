@@ -1,59 +1,60 @@
 require 'spec_helper'
 require 'data_objects/schema/column'
 
-describe 'DataObjects::Schema::ColumnSet#eql?' do
+module DataObjects::Schema
+  describe ColumnSet, '#eql?' do
 
-  subject { columns.eql?(other) }
+    subject { columns.eql?(other) }
 
-  let(:original_column)  { DataObjects::Schema::Column.new('name', {})             }
-  let(:columns)          { DataObjects::Schema::ColumnSet.new([ original_column ]) }
+    let(:original_column)  { Column.new('name', {})             }
+    let(:columns)          { ColumnSet.new([ original_column ]) }
 
-  context 'with the same columns' do
+    context 'with the same columns' do
 
-    let(:other) { columns }
+      let(:other) { columns }
 
-    it { should be(true) }
+      it { should be(true) }
 
-    it 'is symmetric' do
-      should == other.eql?(columns)
-    end
-  end
-
-  context 'with equivalent columns' do
-
-    let(:other) { columns.dup }
-
-    it { should be(true) }
-
-    it 'is symmetric' do
-      should == other.eql?(columns)
-    end
-  end
-
-  context 'with both containing no columns' do
-
-    let(:columns) { DataObjects::Schema::ColumnSet.new }
-    let(:other)   { DataObjects::Schema::ColumnSet.new }
-
-    it { should be(true) }
-
-    it 'is symmetric' do
-      should == other.eql?(columns)
-    end
-  end
-
-  context 'with different columns' do
-
-    let(:different_column) { DataObjects::Schema::Column.new('different', {})         }
-    let(:other)            { DataObjects::Schema::ColumnSet.new([ different_column ]) }
-
-    it { should be(false) }
-
-    it 'is symmetric' do
-      should == other.eql?(columns)
+      it 'is symmetric' do
+        should == other.eql?(columns)
+      end
     end
 
-  end
+    context 'with equivalent columns' do
 
+      let(:other) { columns.dup }
+
+      it { should be(true) }
+
+      it 'is symmetric' do
+        should == other.eql?(columns)
+      end
+    end
+
+    context 'with both containing no columns' do
+
+      let(:columns) { ColumnSet.new }
+      let(:other)   { ColumnSet.new }
+
+      it { should be(true) }
+
+      it 'is symmetric' do
+        should == other.eql?(columns)
+      end
+    end
+
+    context 'with different columns' do
+
+      let(:different_column) { Column.new('different', {})         }
+      let(:other)            { ColumnSet.new([ different_column ]) }
+
+      it { should be(false) }
+
+      it 'is symmetric' do
+        should == other.eql?(columns)
+      end
+
+    end
+
+  end
 end
-

@@ -1,39 +1,37 @@
 require 'spec_helper'
 require 'data_objects/schema/column'
 
-describe 'DataObjects::Schema::Column#required?' do
+module DataObjects::Schema
+  describe Column, '#required?' do
 
-  context 'when not specified at construction time' do
-
-    subject { column.required? }
-
-    let(:column)  { DataObjects::Schema::Column.new('name', {}) }
-
-    it { should be(true) }
-
-  end
-
-  context 'when :required => true was passed at construction time' do
+    let(:name)    { 'name' }
+    let(:column)  { Column.new(name, options) }
 
     subject { column.required? }
 
-    let(:options) { { :required => true } }
-    let(:column)  { DataObjects::Schema::Column.new('name', options) }
+    context 'when not specified at construction time' do
 
-    it { should be(true) }
+      let(:options) { Hash.new }
+
+      it { should be(true) }
+
+    end
+
+    context 'when :required => true was passed at construction time' do
+
+      let(:options) { { :required => true } }
+
+      it { should be(true) }
+
+    end
+
+    context 'when :required => false was passed at construction time' do
+
+      let(:options) { { :required => false } }
+
+      it { should be(false) }
+
+    end
 
   end
-
-  context 'when :required => false was passed at construction time' do
-
-    subject { column.required? }
-
-    let(:options) { { :required => false } }
-    let(:column)  { DataObjects::Schema::Column.new('name', options) }
-
-    it { should be(false) }
-
-  end
-
 end
-

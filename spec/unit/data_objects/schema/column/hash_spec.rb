@@ -1,17 +1,18 @@
 require 'spec_helper'
 require 'data_objects/schema/column'
 
-describe 'DataObjects::Schema::Column#hash' do
+module DataObjects::Schema
+  describe Column, '#hash' do
 
-  subject { column.hash }
+    subject { column.hash }
 
-  let(:name)    { 'name' }
-  let(:options) { { :default => 'foo', :required => true } }
-  let(:column)  { DataObjects::Schema::Column.new(name, options) }
+    let(:name)    { 'name' }
+    let(:options) { { :default => 'foo', :required => true } }
+    let(:column)  { Column.new(name, options) }
 
-  it { should be_kind_of(Integer) }
+    it { should be_kind_of(::Integer) }
 
-  it { should == column.name.hash ^ column.default.hash ^ column.required?.hash }
+    it { should == column.name.hash ^ column.default.hash ^ column.required?.hash }
 
+  end
 end
-
