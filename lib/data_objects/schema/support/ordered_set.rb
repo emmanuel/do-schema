@@ -1,5 +1,5 @@
-require 'do-schema/support/transformable'
-require 'do-schema/support/equalizable'
+require 'data_objects/schema/support/transformable'
+require 'data_objects/schema/support/equalizable'
 
 module DataObjects
   module Schema

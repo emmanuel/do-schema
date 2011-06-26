@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/support/ordered_set'
+require 'data_objects/schema/support/ordered_set'
 require 'spec/unit/data_objects/schema/ordered_set/shared/length_spec'
 
 describe 'DataObjects::Schema::OrderedSet#length' do

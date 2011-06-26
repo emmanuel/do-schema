@@ -1,5 +1,5 @@
-require 'do-schema/support/ordered_set'
-require 'do-schema/column'
+require 'data_objects/schema/support/ordered_set'
+require 'data_objects/schema/column'
 
 module DataObjects
   module Schema

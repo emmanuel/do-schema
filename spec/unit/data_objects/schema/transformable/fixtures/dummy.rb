@@ -1,4 +1,4 @@
-require 'do-schema/support/transformable'
+require 'data_objects/schema/support/transformable'
 
 class Immutable
 

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/support/ordered_set'
+require 'data_objects/schema/support/ordered_set'
 
 describe 'DataObjects::Schema::OrderedSet#hash' do
 

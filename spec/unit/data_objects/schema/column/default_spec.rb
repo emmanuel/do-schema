@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/column'
+require 'data_objects/schema/column'
 
 describe 'DataObjects::Schema::Column#default' do
 

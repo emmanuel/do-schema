@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/column'
+require 'data_objects/schema/column'
 require 'spec/unit/data_objects/schema/ordered_set/shared/include_spec'
 
 describe 'DataObjects::Schema::ColumnSet#include?' do

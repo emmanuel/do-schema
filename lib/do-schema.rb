@@ -1,10 +1,10 @@
 require 'data_objects'
 
-require 'do-schema/database'
-require 'do-schema/table'
-require 'do-schema/column'
-require 'do-schema/column/integer'
-require 'do-schema/column/string'
+require 'data_objects/schema/database'
+require 'data_objects/schema/table'
+require 'data_objects/schema/column'
+require 'data_objects/schema/column/integer'
+require 'data_objects/schema/column/string'
 
 module DataObjects
   module Schema

@@ -1,5 +1,5 @@
 require 'addressable/uri'
-require 'do-schema/table'
+require 'data_objects/schema/table'
 
 module DataObjects
   module Schema

@@ -1,4 +1,4 @@
-require 'do-schema/support/ordered_set'
+require 'data_objects/schema/support/ordered_set'
 
 module DataObjects
   module Schema

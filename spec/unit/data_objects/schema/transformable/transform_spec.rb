@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/support/transformable'
+require 'data_objects/schema/support/transformable'
 require 'spec/unit/data_objects/schema/transformable/fixtures/dummy'
 
 describe 'DataObjects::Schema::Transformable#transform' do

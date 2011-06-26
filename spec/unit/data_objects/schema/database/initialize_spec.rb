@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/database'
+require 'data_objects/schema/database'
 
 describe 'DataObjects::Schema::Database#initialize' do
 

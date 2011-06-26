@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/support/ordered_set'
+require 'data_objects/schema/support/ordered_set'
 require 'spec/unit/data_objects/schema/ordered_set/shared/include_spec'
 
 describe 'DataObjects::Schema::OrderedSet#include?' do

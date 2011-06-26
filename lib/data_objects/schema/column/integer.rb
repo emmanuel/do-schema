@@ -1,4 +1,4 @@
-require 'do-schema/column'
+require 'data_objects/schema/column'
 
 module DataObjects
   module Schema

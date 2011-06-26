@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/table'
+require 'data_objects/schema/table'
 require 'spec/unit/data_objects/schema/ordered_set/shared/length_spec'
 
 describe 'DataObjects::Schema::Tables#length' do

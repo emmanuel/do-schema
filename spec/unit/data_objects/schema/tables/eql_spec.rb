@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'do-schema/table'
+require 'data_objects/schema/table'
 
 describe 'DataObjects::Schema::Tables#eql?' do
 
