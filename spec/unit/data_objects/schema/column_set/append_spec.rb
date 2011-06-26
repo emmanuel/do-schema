@@ -7,7 +7,7 @@ module DataObjects::Schema
 
     subject { columns << entry2 }
 
-    let(:columns) { set                                            }
+    let(:columns) { set }
 
     let(:set)     { ColumnSet.new([ entry1 ]) }
     let(:entry1)  { Column.new('column1', {}) }
