@@ -28,7 +28,7 @@ group :quality do
 
   gem 'ParseTree',       '~> 3.0.5'
   gem 'sexp_processor',  '~> 3.0.4'
-  gem 'metric_fu',       '~> 1.3', :git => 'git://github.com/snusnu/metric_fu', :branch => '1.3.0_fileutils_fix'
+  gem 'metric_fu',       '~> 1.3'
   gem 'flay',            '~> 1.4.0'
   gem 'flog',            '~> 2.2.0'
   gem 'heckle',          '~> 1.4.3'
