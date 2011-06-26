@@ -12,8 +12,21 @@ module DataObjects
       include Enumerable
       extend Equalizable
 
+      # The name of this table. Must be unique within its containing Database
+      # 
+      # @api private
       attr_reader :name
+
+      # The columns this table encompasses
+      # 
+      # @api private
       attr_reader :columns
+
+      # Indexes associated with this table
+      attr_reader :indexes
+      attr_reader :primary_key
+      attr_reader :foreign_keys
+      attr_reader :references
 
       equalize :name, :columns
 
@@ -23,7 +36,7 @@ module DataObjects
       end
 
       def each(&block)
-        columns.each(&block)
+        columns.each { |column| yield column }
         self
       end
 
