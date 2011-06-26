@@ -31,6 +31,11 @@ module DataObjects
         { :required => true }
       end
 
+      # @api private
+      def hash
+        Column.hash ^ name.hash
+      end
+
     end # class Column
 
   end # module Schema

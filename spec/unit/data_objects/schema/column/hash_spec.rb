@@ -12,7 +12,7 @@ module DataObjects::Schema
 
     it { should be_kind_of(::Integer) }
 
-    it { should == column.name.hash ^ column.default.hash ^ column.required?.hash }
+    it { should == Column.hash ^ column.name.hash }
 
   end
 end
