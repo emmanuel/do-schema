@@ -2,18 +2,18 @@ require 'spec_helper'
 require 'data_objects/schema/table'
 require 'spec/unit/data_objects/schema/ordered_set/shared/append_spec'
 
-describe 'DataObjects::Schema::Tables#<<' do
+describe 'DataObjects::Schema::TableSet#<<' do
 
   subject { tables << entry2 }
 
-  let(:tables) { set                                       }
+  let(:tables) { set                                           }
 
-  let(:entry1) { DataObjects::Schema::Table.new('table1')  }
-  let(:set)    { DataObjects::Schema::Tables.new([entry1]) }
+  let(:entry1) { DataObjects::Schema::Table.new('table1')      }
+  let(:set)    { DataObjects::Schema::TableSet.new([ entry1 ]) }
 
   context 'when appending a not yet present table' do
 
-    let(:entry2)  { DataObjects::Schema::Table.new('table2') }
+    let(:entry2)  { DataObjects::Schema::Table.new('table2')   }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#<< when appending a not yet included entry'
 

@@ -13,12 +13,12 @@ module DataObjects::Schema::Specs
   end
 end
 
-describe 'DataObjects::Schema::Tables#==' do
+describe 'DataObjects::Schema::TableSet#==' do
 
   subject { tables == other }
 
-  let(:original_table)  { DataObjects::Schema::Table.new('name')            }
-  let(:tables)          { DataObjects::Schema::Tables.new([original_table]) }
+  let(:original_table)  { DataObjects::Schema::Table.new('name')                }
+  let(:tables)          { DataObjects::Schema::TableSet.new([ original_table ]) }
 
   context 'with the same tables' do
 
@@ -43,9 +43,9 @@ describe 'DataObjects::Schema::Tables#==' do
   end
 
   # TODO This probably needs more thought
-  context 'with a class that quacks like Tables and is equivalent otherwise' do
+  context 'with a class that quacks like TableSet and is equivalent otherwise' do
 
-    let(:other) { DataObjects::Schema::Specs::TablesDuck.new([original_table]) }
+    let(:other) { DataObjects::Schema::Specs::TablesDuck.new([ original_table ]) }
 
     it { should be(false) }
 
@@ -56,7 +56,7 @@ describe 'DataObjects::Schema::Tables#==' do
 
   context 'with a subclass that is equivalent otherwise' do
 
-    let(:other) { Class.new(DataObjects::Schema::Tables).new([original_table]) }
+    let(:other) { Class.new(DataObjects::Schema::TableSet).new([ original_table ]) }
 
     it { should be(true) }
 
@@ -68,8 +68,8 @@ describe 'DataObjects::Schema::Tables#==' do
 
   context 'with both containing no tables' do
 
-    let(:tables) { DataObjects::Schema::Tables.new }
-    let(:other)  { DataObjects::Schema::Tables.new }
+    let(:tables) { DataObjects::Schema::TableSet.new }
+    let(:other)  { DataObjects::Schema::TableSet.new }
 
     it { should be(true) }
 
@@ -80,8 +80,8 @@ describe 'DataObjects::Schema::Tables#==' do
 
   context 'with different tables' do
 
-    let(:different_table) { DataObjects::Schema::Table.new('different')        }
-    let(:other)           { DataObjects::Schema::Tables.new([different_table]) }
+    let(:different_table) { DataObjects::Schema::Table.new('different')            }
+    let(:other)           { DataObjects::Schema::TableSet.new([ different_table ]) }
 
     it { should be(false) }
 

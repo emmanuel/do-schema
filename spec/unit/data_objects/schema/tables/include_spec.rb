@@ -2,17 +2,17 @@ require 'spec_helper'
 require 'data_objects/schema/table'
 require 'spec/unit/data_objects/schema/ordered_set/shared/include_spec'
 
-describe 'DataObjects::Schema::Tables#include?' do
+describe 'DataObjects::Schema::TableSet#include?' do
 
   subject { tables.include?(table) }
 
-  let(:tables) { set                                    }
-  let(:table)  { entry                                  }
-  let(:entry)  { DataObjects::Schema::Table.new('name') }
+  let(:tables) { set                                         }
+  let(:table)  { entry                                       }
+  let(:entry)  { DataObjects::Schema::Table.new('name')      }
 
   context 'when the entry is present' do
 
-    let(:set) { DataObjects::Schema::Tables.new([entry]) }
+    let(:set) { DataObjects::Schema::TableSet.new([ entry ]) }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#include? when the entry is present'
 
@@ -20,7 +20,7 @@ describe 'DataObjects::Schema::Tables#include?' do
 
   context 'when the entry is not present' do
 
-    let(:set) { DataObjects::Schema::Tables.new }
+    let(:set) { DataObjects::Schema::TableSet.new }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#include? when the entry is not present'
 

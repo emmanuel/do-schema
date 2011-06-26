@@ -2,13 +2,13 @@ require 'spec_helper'
 require 'data_objects/schema/table'
 require 'spec/unit/data_objects/schema/ordered_set/shared/length_spec'
 
-describe 'DataObjects::Schema::Tables#length' do
+describe 'DataObjects::Schema::TableSet#length' do
 
   subject { tables.length }
 
   context 'when no entry is present' do
 
-    let(:tables) { DataObjects::Schema::Tables.new }
+    let(:tables) { DataObjects::Schema::TableSet.new }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#length when no entry is present'
 
@@ -16,8 +16,8 @@ describe 'DataObjects::Schema::Tables#length' do
 
   context 'when 1 entry is present' do
 
-    let(:tables) { DataObjects::Schema::Tables.new([table]) }
-    let(:table)  { DataObjects::Schema::Table.new('name')   }
+    let(:tables) { DataObjects::Schema::TableSet.new([ table ]) }
+    let(:table)  { DataObjects::Schema::Table.new('name')       }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#length when 1 entry is present'
 
@@ -25,7 +25,7 @@ describe 'DataObjects::Schema::Tables#length' do
 
   context 'when more than 1 entry is present' do
 
-    let(:tables)  { DataObjects::Schema::Tables.new(entries) }
+    let(:tables)  { DataObjects::Schema::TableSet.new(entries) }
 
     let(:entries) { [table1, table2]                         }
 

@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'data_objects/schema/table'
 
-describe 'DataObjects::Schema::Tables#eql?' do
+describe 'DataObjects::Schema::TableSet#eql?' do
 
   subject { tables.eql?(other) }
 
-  let(:original_table)  { DataObjects::Schema::Table.new('name')            }
-  let(:tables)          { DataObjects::Schema::Tables.new([original_table]) }
+  let(:original_table)  { DataObjects::Schema::Table.new('name')                }
+  let(:tables)          { DataObjects::Schema::TableSet.new([ original_table ]) }
 
   context 'with the same tables' do
 
@@ -32,8 +32,8 @@ describe 'DataObjects::Schema::Tables#eql?' do
 
   context 'with both containing no tables' do
 
-    let(:tables) { DataObjects::Schema::Tables.new }
-    let(:other)  { DataObjects::Schema::Tables.new }
+    let(:tables) { DataObjects::Schema::TableSet.new }
+    let(:other)  { DataObjects::Schema::TableSet.new }
 
     it { should be(true) }
 
@@ -44,8 +44,8 @@ describe 'DataObjects::Schema::Tables#eql?' do
 
   context 'with different tables' do
 
-    let(:different_table) { DataObjects::Schema::Table.new('different')        }
-    let(:other)           { DataObjects::Schema::Tables.new([different_table]) }
+    let(:different_table) { DataObjects::Schema::Table.new('different')            }
+    let(:other)           { DataObjects::Schema::TableSet.new([ different_table ]) }
 
     it { should be(false) }
 

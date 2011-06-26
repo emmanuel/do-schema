@@ -2,11 +2,11 @@ require 'spec_helper'
 require 'data_objects/schema/table'
 require 'spec/unit/data_objects/schema/ordered_set/shared/initialize_spec'
 
-describe 'DataObjects::Schema::Tables#initialize' do
+describe 'DataObjects::Schema::TableSet#initialize' do
 
   context 'when no entries are given' do
 
-    subject { DataObjects::Schema::Tables.new }
+    subject { DataObjects::Schema::TableSet.new }
 
     it_should_behave_like 'DataObjects::Schema::OrderedSet#initialize when no entries are given'
 
@@ -14,7 +14,7 @@ describe 'DataObjects::Schema::Tables#initialize' do
 
   context 'when entries are given' do
 
-    subject { DataObjects::Schema::Tables.new(tables) }
+    subject { DataObjects::Schema::TableSet.new(tables) }
 
     let(:tables) { [table1, table2] }
     let(:table1) { entry1           }

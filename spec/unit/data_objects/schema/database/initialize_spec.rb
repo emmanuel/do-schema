@@ -10,7 +10,7 @@ describe 'DataObjects::Schema::Database#initialize' do
 
     its(:name)   { should == name }
     its(:uri)    { should == uri }
-    its(:tables) { should be_kind_of(DataObjects::Schema::Tables) }
+    its(:tables) { should be_kind_of(DataObjects::Schema::TableSet) }
 
   end
 
@@ -42,7 +42,7 @@ describe 'DataObjects::Schema::Database#initialize' do
     let(:table1) { DataObjects::Schema::Table.new('table1') }
     let(:table2) { DataObjects::Schema::Table.new('table2') }
 
-    let(:expected_tables) { DataObjects::Schema::Tables.new(tables) }
+    let(:expected_tables) { DataObjects::Schema::TableSet.new(tables) }
 
     it_should_behave_like 'calling DataObjects::Schema::Database#initialize'
 

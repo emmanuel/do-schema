@@ -4,7 +4,7 @@ require 'data_objects/schema/column'
 module DataObjects
   module Schema
 
-    class Tables < OrderedSet
+    class TableSet < OrderedSet
     end
 
     class Table

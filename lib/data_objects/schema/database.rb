@@ -13,7 +13,7 @@ module DataObjects
       def initialize(name, uri, tables = [])
         @name   = name
         @uri    = uri
-        @tables = Tables.new(tables)
+        @tables = TableSet.new(tables)
       end
 
       def empty?

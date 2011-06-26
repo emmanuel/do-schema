@@ -12,8 +12,8 @@ describe 'DataObjects::Schema::Database#tables' do
 
     let(:database) { DataObjects::Schema::Database.new(name, uri) }
 
-    it { should be_instance_of(DataObjects::Schema::Tables) }
-    it { should == DataObjects::Schema::Tables.new([]) }
+    it { should be_instance_of(DataObjects::Schema::TableSet) }
+    it { should == DataObjects::Schema::TableSet.new([]) }
 
   end
 
@@ -26,22 +26,22 @@ describe 'DataObjects::Schema::Database#tables' do
 
     let(:database) { DataObjects::Schema::Database.new(name, uri, []) }
 
-    it { should be_instance_of(DataObjects::Schema::Tables) }
-    it { should == DataObjects::Schema::Tables.new([]) }
+    it { should be_instance_of(DataObjects::Schema::TableSet) }
+    it { should == DataObjects::Schema::TableSet.new([]) }
 
   end
 
-  context 'when a Tables instance was passed at construction time' do
+  context 'when a TableSet instance was passed at construction time' do
 
     subject { database.tables }
 
     let(:name)     { 'foo' }
     let(:uri)      { mock(:uri) }
-    let(:tables)   { DataObjects::Schema::Tables.new([]) }
+    let(:tables)   { DataObjects::Schema::TableSet.new([]) }
 
     let(:database) { DataObjects::Schema::Database.new(name, uri, tables) }
 
-    it { should be_instance_of(DataObjects::Schema::Tables) }
+    it { should be_instance_of(DataObjects::Schema::TableSet) }
     it { should == tables }
 
   end
