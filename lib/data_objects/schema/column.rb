@@ -18,7 +18,7 @@ module DataObjects
       def initialize(name, options)
         @name     = name
         @default  = options.fetch(:default, nil)
-        @required = options.fetch(:required, default_options.fetch(:required))
+        @required = options.fetch(:required) { default_options.fetch(:required) }
       end
 
       # @api public
