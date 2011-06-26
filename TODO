@@ -17,10 +17,10 @@
 #                      Reference
 #
 #                      OrderedSet
-#                      Columns       (has-a OrderedSet)
-#                      Indexes       (has-a OrderedSet)
-#                      UniqueIndexes (has-a OrderedSet)
-#                      ForeignKeys   (has-a OrderedSet)
+#                      ColumnSet      (has-a OrderedSet)
+#                      IndexSet       (has-a OrderedSet)
+#                      UniqueIndexSet (has-a OrderedSet)
+#                      ForeignKeySet  (has-a OrderedSet)
 
 uri = Addressable::URI.parse('mysql://localhost/dm_core_test')
 
@@ -37,7 +37,7 @@ database.tables.each do |table|
   table.name                   # => "customers"
 
   # Column API
-  table.columns                # => Columns.new([ Column1, Column2, ... ])
+  table.columns                # => ColumnSet.new([ Column1, Column2, ... ])
 
   table.each do |column|
     column                     # => Column::String.new('name', :length => 0..10)
@@ -52,36 +52,36 @@ database.tables.each do |table|
 
   # Primary Key API
   table.primary_key            # => PrimaryKey.new(name, [ Column1, Column2, ... ])
-  table.primary_key.columns    # => Columns.new([ Column1, Column2, ... ])
+  table.primary_key.columns    # => ColumnSet.new([ Column1, Column2, ... ])
   table.primary_key.unique?    # => true
 
   # Index API
-  table.indexes                # => Indexes.new([ Index1, Index2, ... ])
+  table.indexes                # => IndexSet.new([ Index1, Index2, ... ])
 
   table.indexes.each do |index|
     index                      # => Index.new('index_name', [ Column1, Column2, ... ])
     index.name                 # => "index_name"
     index.unique?              # => false
-    index.columns              # => Columns.new([ Column1, Column2, ... ])
+    index.columns              # => ColumnSet.new([ Column1, Column2, ... ])
   end
 
   # Unique Index API
-  table.unique_indexes         # => UniqueIndexes.new([ UniqueIndex1, UniqueIndex1, ... ])
+  table.unique_indexes         # => UniqueIndexSet.new([ UniqueIndex1, UniqueIndex1, ... ])
 
   table.unique_indexes.each do |unique_index|
     unique_index               # => UniqueIndex.new('unique_name', [ Column1, Column2, ... ])
     unique_index.name          # => "unique_name"
     unique_index.unique?       # => true
-    unique_index.columns       # => Columns.new([ Column1, Column2, ... ])
+    unique_index.columns       # => ColumnSet.new([ Column1, Column2, ... ])
   end
 
   # Foreign Key API
-  table.foreign_keys           # => ForeignKeys.new([ ForeignKey1, ForeignKey2, ... ])
+  table.foreign_keys           # => ForeignKeySet.new([ ForeignKey1, ForeignKey2, ... ])
 
   table.foreign_keys.each do |foreign_key|
     foreign_key                # => ForeignKey.new('foreign_key_name', [ Column1, Column2, ... ], reference, :on_delete => :restrict, :on_update => :restrict)
     foreign_key.name           # => "foreign_key_name"
-    foreign_key.columns        # => Columns.new([ Column1, Column2, ... ])
+    foreign_key.columns        # => ColumnSet.new([ Column1, Column2, ... ])
     foreign_key.reference      # => Reference.new(other_table, other_table.primary_key)
     foreign_key.on_delete      # => :restrict
     foreign_key.on_update      # => nil

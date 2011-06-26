@@ -1,5 +1,4 @@
 
-
            ####################################################################
            #                                                                  #
            # DataObjects::Schema::                                            #
@@ -21,10 +20,11 @@
            #                      Reference                                   #
            #                                                                  #
            #                      OrderedSet                                  #
-           #                      Indexes       (has-a OrderedSet)            #
-           #                      UniqueIndexes (has-a OrderedSet)            #
-           #                      ForeignKeys   (has-a OrderedSet)            #
+           #                      TableSet       (has-a OrderedSet)           #
            #                      ColumnSet      (has-a OrderedSet)           #
+           #                      IndexSet       (has-a OrderedSet)           #
+           #                      UniqueIndexSet (has-a OrderedSet)           #
+           #                      ForeignKeys    (has-a OrderedSet)           #
            #                                                                  #
            #                                                                  #
            # ---------------------------------------------------------------  #
@@ -52,7 +52,7 @@ database = DataObjects::Schema.load(uri)
 
 database.name                  # => "dm_core_test"
 database.uri                   # => uri
-database.tables                # => Tables.new([ Table ])
+database.tables                # => TableSet.new([ Table ])
 database.tables[:table_name]   # => Table.new('table_name', ...)
 database.method_missing        # delegates to #tables[]
 
@@ -107,7 +107,7 @@ database.tables.each do |table|
   table.check_constraints['constraint_name'] # => Constraint::Check
 
   # Index API
-  table.indexes                # => Indexes.new([ Index ])
+  table.indexes                # => IndexSet.new([ Index ])
 
   table.indexes.each do |index|
 
@@ -119,7 +119,7 @@ database.tables.each do |table|
   end
 
   # Unique Index API
-  table.unique_indexes         # => UniqueIndexes.new([ UniqueIndex ])
+  table.unique_indexes         # => UniqueIndexSet.new([ UniqueIndex ])
 
   table.unique_indexes.each do |unique_index|
 
@@ -244,7 +244,7 @@ DataObjects::Schema.database(uri) do
 
     # Defining a foreign key with a single column can be done without passing
     # a block to the #foreign_key method. The 2nd parameter must be a symbol
-    # denoting a column that actually exists in the current database (db)
+    # denoting a column that actually exists in the current table
     #
     # When defining the referenced column, we can rely on #method_missing
     # functionality to recognize any table name inside the current database.

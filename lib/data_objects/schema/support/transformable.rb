@@ -3,7 +3,7 @@ module DataObjects
 
     module Transformable
 
-      private
+    private
 
       def transform(&block)
         copy = self.clone

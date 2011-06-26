@@ -67,7 +67,7 @@ module DataObjects
         self
       end
 
-      # Check if the]e are any entries
+      # Check if there are any entries
       #
       # @return [Boolean]
       #

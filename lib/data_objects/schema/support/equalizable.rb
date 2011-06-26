@@ -9,7 +9,7 @@ module DataObjects
         define_hash_method(methods)
       end
 
-      private
+    private
 
       def define_eql_method(methods)
         class_eval <<-RUBY, __FILE__, __LINE__ + 1
